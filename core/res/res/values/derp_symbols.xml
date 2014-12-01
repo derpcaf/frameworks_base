@@ -100,4 +100,7 @@
   <!-- In call notification vibration strength -->
   <java-symbol type="integer" name="config_in_call_notification_vibration_strength" />
 
+  <!-- Device Wake Keys -->
+  <java-symbol type="integer" name="config_deviceHardwareWakeKeys" />
+
 </resources>
