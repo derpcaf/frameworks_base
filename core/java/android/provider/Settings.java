@@ -4874,6 +4874,12 @@ public final class Settings {
          */
         public static final String HIDE_LOCKSCREEN_STATUS_BAR = "hide_lockscreen_status_bar";
 
+	    /**
+         * show the membar in recents
+         *  @hide
+         */
+        public static final String SYSTEMUI_RECENTS_MEM_DISPLAY = "systemui_recents_mem_display";
+
         /**
          * 0 = off
 	 * 1 = left
