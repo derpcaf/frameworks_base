@@ -41,6 +41,7 @@ import com.android.systemui.qs.tiles.HotspotTile;
 import com.android.systemui.qs.tiles.HWKeysTile;
 import com.android.systemui.qs.tiles.IntentTile;
 import com.android.systemui.qs.tiles.LocationTile;
+import com.android.systemui.qs.tiles.NavBarTile;
 import com.android.systemui.qs.tiles.NfcTile;
 import com.android.systemui.qs.tiles.MusicTile;
 import com.android.systemui.qs.tiles.NightDisplayTile;
@@ -140,6 +141,8 @@ public class QSFactoryImpl implements QSFactory {
                 return new RebootTile(mHost);
             case "music":
                 return new MusicTile(mHost);
+            case "navbar":
+                return new NavBarTile(mHost);
         }
 
         // Intent tiles.
