@@ -97,7 +97,6 @@ public final class PhoneStatusBarTransitions extends BarTransitions {
                     animateTransitionTo(mClock, newAlphaBC),
                     animateTransitionTo(mCenterClock, newAlphaBC),
                     animateTransitionTo(mRightClock, newAlphaBC),
-                    animateTransitionTo(mNetworkTraffic, newAlpha),
 		    animateTransitionTo(mLogoIcon, newAlpha),
 		    animateTransitionTo(mLogoIconRight, newAlpha),
                     animateTransitionTo(mBattery, newAlphaBC)
