@@ -31,4 +31,7 @@
     <!-- Width of the battery circle icon in the status bar. -->
     <dimen name="status_bar_battery_circle_icon_width">20.5dp</dimen>
 
+    <!-- Custom Carrier Label -->
+    <dimen name="status_bar_carrier_height">14dp</dimen>
+
 </resources>

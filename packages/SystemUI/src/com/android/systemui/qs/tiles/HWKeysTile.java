@@ -123,7 +123,7 @@ public class HWKeysTile extends QSTileImpl<BooleanState> {
 
     @Override
     public int getMetricsCategory() {
-        return MetricsEvent.XTENDED;
+        return MetricsEvent.DERPZONE;
     }
 
     @Override
