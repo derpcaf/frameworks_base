@@ -5259,6 +5259,15 @@ public final class Settings {
         public static final String FULL_GESTURE_NAVBAR_DT2S = "full_gesture_navbar_dt2s";
 
         /**
+         * enable or disable single handed mode
+         * @hide
+         */
+        public static final String ONE_HAND_MODE_ENABLED = "one_hand_mode_enabled";
+
+        /** @hide */
+        private static final Validator ONE_HAND_MODE_ENABLED_VALIDATOR = BOOLEAN_VALIDATOR;
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -5335,7 +5344,8 @@ public final class Settings {
             STATUSBAR_CLOCK_DATE_FORMAT,
             OMNI_USE_BOTTOM_GESTURE_NAVIGATION,
             OMNI_LONG_PRESS_POWER_TORCH,
-            NOTIFICATION_SOUND_VIB_SCREEN_ON
+            NOTIFICATION_SOUND_VIB_SCREEN_ON,
+            ONE_HAND_MODE_ENABLED,
         };
 
         /**
@@ -5482,6 +5492,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(QS_COLUMNS_PORTRAIT);
             PRIVATE_SETTINGS.add(QS_COLUMNS_LANDSCAPE);
             PRIVATE_SETTINGS.add(QS_HEADER_STYLE);
+            PRIVATE_SETTINGS.add(ONE_HAND_MODE_ENABLED);
         }
 
 
@@ -5599,6 +5610,7 @@ public final class Settings {
             VALIDATORS.put(OMNI_LONG_PRESS_POWER_TORCH, OMNI_LONG_PRESS_POWER_TORCH_VALIDATOR);
             VALIDATORS.put(MUTE_ANNOYING_NOTIFICATIONS_THRESHOLD, MUTE_ANNOYING_NOTIFICATIONS_THRESHOLD_VALIDATOR);
             VALIDATORS.put(NOTIFICATION_SOUND_VIB_SCREEN_ON, NOTIFICATION_SOUND_VIB_SCREEN_ON_VALIDATOR);
+            VALIDATORS.put(ONE_HAND_MODE_ENABLED, ONE_HAND_MODE_ENABLED_VALIDATOR);
         }
 
         /**
