@@ -167,8 +167,8 @@ public class CommandQueue extends IStatusBar.Stub {
         default void onFingerprintHelp(String message) { }
         default void onFingerprintError(String error) { }
         default void hideFingerprintDialog() { }
-        default void restartUI() { }
         default void toggleCameraFlash() { }
+        default void restartUI() { }
     }
 
     @VisibleForTesting
@@ -555,18 +555,18 @@ public class CommandQueue extends IStatusBar.Stub {
         }
     }
 
-    public void restartUI() {
-        synchronized (mLock) {
-            mHandler.removeMessages(MSG_RESTART_UI);
-            mHandler.obtainMessage(MSG_RESTART_UI).sendToTarget();
-	}
-    }
-
     public void toggleCameraFlash() {
         synchronized (mLock) {
             mHandler.removeMessages(MSG_TOGGLE_CAMERA_FLASH);
             mHandler.sendEmptyMessage(MSG_TOGGLE_CAMERA_FLASH);
         }
+    }
+
+    public void restartUI() {
+        synchronized (mLock) {
+            mHandler.removeMessages(MSG_RESTART_UI);
+            mHandler.obtainMessage(MSG_RESTART_UI).sendToTarget();
+	}
     }
 
     private final class H extends Handler {
@@ -815,16 +815,16 @@ public class CommandQueue extends IStatusBar.Stub {
                         mCallbacks.get(i).showPinningEscapeToast();
                     }
                     break;
-                case MSG_RESTART_UI:
-                    for (int i = 0; i < mCallbacks.size(); i++) {
-                        mCallbacks.get(i).restartUI();
-		    }
-		    break;
                 case MSG_TOGGLE_CAMERA_FLASH:
                     for (int i = 0; i < mCallbacks.size(); i++) {
                         mCallbacks.get(i).toggleCameraFlash();
                     }
                     break;
+                case MSG_RESTART_UI:
+                    for (int i = 0; i < mCallbacks.size(); i++) {
+                        mCallbacks.get(i).restartUI();
+		    }
+		    break;
             }
         }
     }
