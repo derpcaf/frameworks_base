@@ -93,8 +93,8 @@ public class CommandQueue extends IStatusBar.Stub {
     private static final int MSG_SHOW_CHARGING_ANIMATION       = 44 << MSG_SHIFT;
     private static final int MSG_SHOW_PINNING_TOAST_ENTER_EXIT = 45 << MSG_SHIFT;
     private static final int MSG_SHOW_PINNING_TOAST_ESCAPE     = 46 << MSG_SHIFT;
-    private static final int MSG_RESTART_UI                    = 47 << MSG_SHIFT;
-    private static final int MSG_TOGGLE_CAMERA_FLASH           = 48 << MSG_SHIFT;
+    private static final int MSG_TOGGLE_CAMERA_FLASH           = 47 << MSG_SHIFT;
+    private static final int MSG_RESTART_UI                    = 48 << MSG_SHIFT;
     private static final int MSG_SET_AUTOROTATE_STATUS         = 49 << MSG_SHIFT;
 
     public static final int FLAG_EXCLUDE_NONE = 0;
@@ -832,16 +832,16 @@ public class CommandQueue extends IStatusBar.Stub {
                         mCallbacks.get(i).toggleCameraFlash();
 		    }
  		    break;
+                case MSG_RESTART_UI:
+                    for (int i = 0; i < mCallbacks.size(); i++) {
+                        mCallbacks.get(i).restartUI();
+                    }
+                    break;
                 case MSG_SET_AUTOROTATE_STATUS:
                     for (int i = 0; i < mCallbacks.size(); i++) {
                         mCallbacks.get(i).setAutoRotate(msg.arg1 != 0);
                     }
                     break;
-                case MSG_RESTART_UI:
-                    for (int i = 0; i < mCallbacks.size(); i++) {
-                        mCallbacks.get(i).restartUI();
-		    }
-		    break;
             }
         }
     }
