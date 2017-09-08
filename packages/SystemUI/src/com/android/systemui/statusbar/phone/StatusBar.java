@@ -211,6 +211,7 @@ import com.android.systemui.statusbar.NotificationPresenter;
 import com.android.systemui.statusbar.NotificationRemoteInputManager;
 import com.android.systemui.statusbar.NotificationShelf;
 import com.android.systemui.statusbar.NotificationViewHierarchyManager;
+import android.database.ContentObserver;
 import com.android.systemui.statusbar.RemoteInputController;
 import com.android.systemui.statusbar.ScrimView;
 import com.android.systemui.statusbar.StatusBarState;
@@ -717,9 +718,6 @@ public class StatusBar extends SystemUI implements DemoMode,
 
         createAndAddWindows();
 
-        mNosSettingsObserver.observe();
-        mNosSettingsObserver.update();
-
         // Make sure we always have the most current wallpaper info.
         IntentFilter wallpaperChangedFilter = new IntentFilter(Intent.ACTION_WALLPAPER_CHANGED);
         mContext.registerReceiver(mWallpaperChangedReceiver, wallpaperChangedFilter);
@@ -778,6 +776,7 @@ public class StatusBar extends SystemUI implements DemoMode,
         }
 
         // end old BaseStatusBar.start().
+
 
         // Lastly, call to the icon policy to install/update all the icons.
         mIconPolicy = new PhoneStatusBarPolicy(mContext, mIconController);
@@ -4866,11 +4865,29 @@ public class StatusBar extends SystemUI implements DemoMode,
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.SYSTEM_UI_THEME),
                     false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.QS_ROWS_PORTRAIT),
+                    false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.QS_ROWS_LANDSCAPE),
+                    false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.QS_COLUMNS_PORTRAIT),
+                    false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.QS_COLUMNS_LANDSCAPE),
+                    false, this, UserHandle.USER_ALL);
         }
 
         @Override
         public void onChange(boolean selfChange, Uri uri) {
-             if (uri.equals(Settings.System.getUriFor(
+            if (uri.equals(Settings.System.getUriFor(Settings.System.QS_ROWS_PORTRAIT)) ||
+                    uri.equals(Settings.System.getUriFor(Settings.System.QS_ROWS_LANDSCAPE)) ||
+                    uri.equals(Settings.System.getUriFor(Settings.System.QS_COLUMNS_PORTRAIT)) ||
+                    uri.equals(Settings.System.getUriFor(Settings.System.QS_COLUMNS_LANDSCAPE))) {
+                setQsRowsColumns();
+                update();
+            } else if (uri.equals(Settings.System.getUriFor(
                     Settings.System.ACCENT_PICKER))) {
                 // Unload the accents and update the accent only when the user asks.
                 // Keeps us from overloading the system by performing these tasks every time.
@@ -4881,8 +4898,14 @@ public class StatusBar extends SystemUI implements DemoMode,
         }
 
          public void update() {
-            updateTheme();
+            setQsRowsColumns();
         }
+    }
+
+         private void setQsRowsColumns() {
+            if (mQSPanel != null) {
+                mQSPanel.updateResources();
+         }
     }
 
     public int getWakefulnessState() {
@@ -5386,6 +5409,7 @@ public class StatusBar extends SystemUI implements DemoMode,
     public boolean isDeviceInVrMode() {
         return mVrMode;
     }
+
 
     private final BroadcastReceiver mBannerActionBroadcastReceiver = new BroadcastReceiver() {
         @Override
