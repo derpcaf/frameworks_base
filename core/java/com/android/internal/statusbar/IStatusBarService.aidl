@@ -103,4 +103,10 @@ interface IStatusBarService
     void hideFingerprintDialog();
     void restartUI();
     void toggleCameraFlash();
+    void setAutoRotate(boolean enabled);
+    void toggleRecentApps();
+    void toggleSplitScreen();
+    void preloadRecentApps();
+    void cancelPreloadRecentApps();
+    void startAssist(in Bundle args);
 }
