@@ -115,7 +115,11 @@ public class QSCustomizer extends LinearLayout implements OnMenuItemClickListene
         mTileQueryHelper = new TileQueryHelper(context, mTileAdapter);
         mRecyclerView.setAdapter(mTileAdapter);
         mTileAdapter.getItemTouchHelper().attachToRecyclerView(mRecyclerView);
+<<<<<<< HEAD
         mGlm = new GridLayoutManager(getContext(), mDefaultColumns);
+=======
+        mGlm = new GridLayoutManager(getContext(), 3);
+>>>>>>> 2a7adc2e623... QS tiles customizer: respect user tiles columns value
         mGlm.setSpanSizeLookup(mTileAdapter.getSizeLookup());
         mRecyclerView.setLayoutManager(mGlm);
         mRecyclerView.addItemDecoration(mTileAdapter.getItemDecoration());
@@ -341,11 +345,19 @@ public class QSCustomizer extends LinearLayout implements OnMenuItemClickListene
         final int columns;
         if (mContext.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
             columns = Settings.System.getIntForUser(mContext.getContentResolver(),
+<<<<<<< HEAD
                     Settings.System.QS_COLUMNS_PORTRAIT, mDefaultColumns,
                     UserHandle.USER_CURRENT);
         } else {
             columns = Settings.System.getIntForUser(mContext.getContentResolver(),
                     Settings.System.QS_COLUMNS_LANDSCAPE, mDefaultColumns,
+=======
+                    Settings.System.QS_COLUMNS_PORTRAIT, 3,
+                    UserHandle.USER_CURRENT);
+        } else {
+            columns = Settings.System.getIntForUser(mContext.getContentResolver(),
+                    Settings.System.QS_COLUMNS_LANDSCAPE, 5,
+>>>>>>> 2a7adc2e623... QS tiles customizer: respect user tiles columns value
                     UserHandle.USER_CURRENT);
         }
         mTileAdapter.setColumns(columns);
