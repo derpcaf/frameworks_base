@@ -4870,6 +4870,12 @@ public final class Settings {
          */
         public static final String STATUS_BAR_SHOW_WEATHER_TEMP = "statusbar_show_weather_temp";
 
+         /**
+         * Unlock keystore with fingerprint after reboot
+         * @hide
+         */
+        public static final String FP_UNLOCK_KEYSTORE = "fp_unlock_keystore";
+
         /**
          * Hide Statusbar on LockScreen
          * @hide
