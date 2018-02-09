@@ -203,4 +203,7 @@
     <!-- Screenshot Delete Toast -->
     <string name="delete_screenshot_toast">Screenshot deleted</string>
 
+    <!--Google sound search tile -->
+    <string name="quick_settings_sound_search">Sound Search</string>
+
 </resources>
