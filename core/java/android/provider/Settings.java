@@ -5169,6 +5169,13 @@ public final class Settings {
         @ChaosLab(name="GestureAnywhere", classification=Classification.NEW_FIELD)
         public static final String GESTURE_ANYWHERE_SHOW_TRIGGER = "gesture_anywhere_show_trigger";
 
+         /**
+         * Hide lockscreen indicator text
+         *
+         * @hide
+         */
+        public static final String HIDE_LOCKSCREEN_INDICATOR_DISPLAY = "hide_lockscreen_indicator_display";
+
 	/**
          * Whether to enable the pixel navbar animation
          * @hide
@@ -5662,7 +5669,11 @@ public final class Settings {
             PRIVATE_SETTINGS.add(QS_COLUMNS_LANDSCAPE);
             PRIVATE_SETTINGS.add(QS_HEADER_STYLE);
             PRIVATE_SETTINGS.add(ONE_HAND_MODE_ENABLED);
+<<<<<<< HEAD
             PRIVATE_SETTINGS.add(RECENTS_COMPONENT);
+=======
+            PRIVATE_SETTINGS.add(HIDE_LOCKSCREEN_INDICATOR_DISPLAY);
+>>>>>>> c41cd66326b... [1/2] base: hide indicator text
         }
 
 
