@@ -5176,6 +5176,27 @@ public final class Settings {
          */
         public static final String HIDE_LOCKSCREEN_INDICATOR_DISPLAY = "hide_lockscreen_indicator_display";
 
+        /**
+         * Hide lockscreen icon
+         *
+         * @hide
+         */
+        public static final String HIDE_LOCKSCREEN_ICON = "hide_lockscreen_icon";
+
+        /**
+         * 0 = off
+	 * 1 = left
+	 * 2 = right
+         */
+        public static final String STATUS_BAR_LOGO = "status_bar_logo";
+
+        /**
+	 ** Statusbar logo Style
+	 ** @hide
+	 **/
+	 public static final String STATUS_BAR_LOGO_STYLE = "status_bar_logo_style";
+
+>>>>>>> 387dd0dc0d4... [1/2] base: hide lock screen icon
 	/**
          * Whether to enable the pixel navbar animation
          * @hide
@@ -5673,7 +5694,11 @@ public final class Settings {
             PRIVATE_SETTINGS.add(RECENTS_COMPONENT);
 =======
             PRIVATE_SETTINGS.add(HIDE_LOCKSCREEN_INDICATOR_DISPLAY);
+<<<<<<< HEAD
 >>>>>>> c41cd66326b... [1/2] base: hide indicator text
+=======
+	    PRIVATE_SETTINGS.add(HIDE_LOCKSCREEN_ICON);
+>>>>>>> 387dd0dc0d4... [1/2] base: hide lock screen icon
         }
 
 
