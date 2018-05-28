@@ -6685,19 +6685,7 @@ public class StatusBar extends SystemUI implements DemoMode,
         return lp;
     }
 
-    public void updateEdgeGestures(boolean enabled) {
-        Log.d(TAG, "updateEdgeGestures: Updating edge gestures");
-        if (enabled) {
-            if (gesturesController == null) {
-                gesturesController = new ScreenGesturesController(mContext, mWindowManager, this);
-            }
-            gesturesController.reorient();
-        } else if (!enabled && gesturesController != null) {
-            gesturesController.stop();
-            gesturesController = null;
-    }
-
-    private void updateRecentsMode() {
+ private void updateRecentsMode() {
         boolean slimRecents = Settings.System.getIntForUser(mContext.getContentResolver(),
                 Settings.System.USE_SLIM_RECENTS, 0, UserHandle.USER_CURRENT) == 1;
         if (slimRecents) {
@@ -6720,6 +6708,19 @@ public class StatusBar extends SystemUI implements DemoMode,
     private void rebuildRecentsScreen() {
         if (mSlimRecents != null) {
             mSlimRecents.rebuildRecentsScreen();
+	}
+}
+
+    public void updateEdgeGestures(boolean enabled) {
+        Log.d(TAG, "updateEdgeGestures: Updating edge gestures");
+        if (enabled) {
+            if (gesturesController == null) {
+                gesturesController = new ScreenGesturesController(mContext, mWindowManager, this);
+            }
+            gesturesController.reorient();
+        } else if (!enabled && gesturesController != null) {
+            gesturesController.stop();
+            gesturesController = null;
 
         }
     }
