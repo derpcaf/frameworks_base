@@ -2096,7 +2096,7 @@ public class StatusBar extends SystemUI implements DemoMode,
     public boolean isUsingDarkTheme() {
         OverlayInfo themeInfo = null;
         try {
-            themeInfo = mOverlayManager.getOverlayInfo("com.android.system.theme.dark",
+            themeInfo = mOverlayManager.getOverlayInfo("com.android.system.theme.dark.havoc",
                     mLockscreenUserManager.getCurrentUserId());
         } catch (RemoteException e) {
             e.printStackTrace();
@@ -2104,12 +2104,22 @@ public class StatusBar extends SystemUI implements DemoMode,
         return themeInfo != null && themeInfo.isEnabled();
     }
 
+    public boolean isUsingBlackTheme() {
+        OverlayInfo themeInfo = null;
+        try {
+            themeInfo = mOverlayManager.getOverlayInfo("com.android.system.theme.black.havoc",
+                    mLockscreenUserManager.getCurrentUserId());
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+        return themeInfo != null && themeInfo.isEnabled();
+    }
 
     // Check for black and white accent overlays
     public void unfuckBlackWhiteAccent() {
         OverlayInfo themeInfo = null;
         try {
-            if (isUsingDarkTheme()) {
+            if (isUsingDarkTheme() || isUsingBlackTheme()) {
                 themeInfo = mOverlayManager.getOverlayInfo("com.accents.black",
                         mLockscreenUserManager.getCurrentUserId());
                 if (themeInfo != null && themeInfo.isEnabled()) {
@@ -2840,6 +2850,7 @@ public class StatusBar extends SystemUI implements DemoMode,
             pw.println("    overlay manager not initialized!");
         } else {
             pw.println("    dark overlay on: " + isUsingDarkTheme());
+            pw.println("    black overlay on: " + isUsingBlackTheme());
         }
         final boolean lightWpTheme = mContext.getThemeResId() == R.style.Theme_SystemUI_Light;
         pw.println("    light wallpaper theme: " + lightWpTheme);
@@ -3910,7 +3921,8 @@ public class StatusBar extends SystemUI implements DemoMode,
     protected void updateTheme() {
         final boolean inflated = mStackScroller != null;
         int userThemeSetting = Settings.System.getIntForUser(mContext.getContentResolver(),
-                Settings.System.SYSTEM_UI_THEME, 0, mCurrentUserId);
+                Settings.System.SYSTEM_UI_THEME, 0, mLockscreenUserManager.getCurrentUserId());
+        boolean useBlackTheme = false;
         boolean useDarkTheme = false;
         if (userThemeSetting == 0) {
             // The system wallpaper defines if QS should be light or dark.
@@ -3922,6 +3934,7 @@ public class StatusBar extends SystemUI implements DemoMode,
             // with white on white or black on black
             unfuckBlackWhiteAccent();
         } else {
+            useBlackTheme = userThemeSetting == 3;
             useDarkTheme = userThemeSetting == 2;
             // Check for black and white accent so we don't end up
             // with white on white or black on black
@@ -3929,21 +3942,35 @@ public class StatusBar extends SystemUI implements DemoMode,
         }
 
         if (isUsingDarkTheme() != useDarkTheme) {
-            mUiOffloadThread.submit(() -> {
                 try {
-                    mOverlayManager.setEnabled("com.android.system.theme.dark",
+                    mOverlayManager.setEnabled("com.android.system.theme.dark.havoc",
                             useDarkTheme, mLockscreenUserManager.getCurrentUserId());
-                    mOverlayManager.setEnabled("com.android.systemui.theme.dark",
+                    mOverlayManager.setEnabled("com.android.systemui.theme.dark.havoc",
                             useDarkTheme, mLockscreenUserManager.getCurrentUserId());
-                    mOverlayManager.setEnabled("com.android.settings.theme.dark",
+                    mOverlayManager.setEnabled("com.android.settings.theme.dark.havoc",
                             useDarkTheme, mLockscreenUserManager.getCurrentUserId());
                     // Check for black and white accent so we don't end up
                     // with white on white or black on black
                     unfuckBlackWhiteAccent();
                 } catch (RemoteException e) {
-                    Log.w(TAG, "Can't change theme", e);
-                }
-            });
+                    Log.w(TAG, "Can't change dark theme", e);
+            }
+        }
+
+        if (isUsingBlackTheme() != useBlackTheme) {
+                try {
+                    mOverlayManager.setEnabled("com.android.system.theme.black.havoc",
+                            useBlackTheme, mLockscreenUserManager.getCurrentUserId());
+                    mOverlayManager.setEnabled("com.android.systemui.theme.black.havoc",
+                            useBlackTheme, mLockscreenUserManager.getCurrentUserId());
+                    mOverlayManager.setEnabled("com.android.settings.theme.black.havoc",
+                            useBlackTheme, mLockscreenUserManager.getCurrentUserId());
+                    // Check for black and white accent so we don't end up
+                    // with white on white or black on black
+                    unfuckBlackWhiteAccent();
+                } catch (RemoteException e) {
+                    Log.w(TAG, "Can't change black theme(s)", e);
+            }
         }
 
         // Lock wallpaper defines the color of the majority of the views, hence we'll use it
