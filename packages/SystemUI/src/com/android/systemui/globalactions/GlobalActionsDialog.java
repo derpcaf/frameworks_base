@@ -106,7 +106,7 @@ import java.util.ArrayList;
 import java.util.BitSet;
 import java.util.List;
 
-import com.android.internal.util.xtended.OnTheGoActions;
+import com.android.internal.util.derpcaf.OnTheGoActions;
 
 /**
  * Helper to show the global actions dialog.  Each item is an {@link Action} that
@@ -1050,7 +1050,7 @@ class GlobalActionsDialog implements DialogInterface.OnDismissListener,
 
     private void startOnTheGo() {
         final ComponentName cn = new ComponentName("com.android.systemui",
-                "com.android.systemui.benzo.onthego.OnTheGoService");
+                "com.android.systemui.derpcaf.onthego.OnTheGoService");
         final Intent startIntent = new Intent();
         startIntent.setComponent(cn);
         startIntent.setAction("start");
