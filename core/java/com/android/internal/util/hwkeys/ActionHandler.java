@@ -157,7 +157,6 @@ public class ActionHandler {
         // we need to make this more reliable when the user tap the partial screenshot button
         // quickly and more times 
         sDisabledActions.add(SYSTEMUI_TASK_REGION_SCREENSHOT);
-        sDisabledActions.add(SYSTEMUI_TASK_STOP_SCREENPINNING);
         sDisabledActions.add(SYSTEMUI_TASK_ASSISTANT_SOUND_SEARCH);
     }
 
@@ -290,8 +289,7 @@ public class ActionHandler {
             if (sDisabledActions.contains(action)) {
                 continue;
             }
-            if (TextUtils.equals(action, SYSTEMUI_TASK_STOP_SCREENPINNING)
-                    || TextUtils.equals(action, SYSTEMUI_TASK_IME_NAVIGATION_DOWN)
+            if (TextUtils.equals(action, SYSTEMUI_TASK_IME_NAVIGATION_DOWN)
                     || TextUtils.equals(action, SYSTEMUI_TASK_IME_NAVIGATION_LEFT)
                     || TextUtils.equals(action, SYSTEMUI_TASK_IME_NAVIGATION_RIGHT)
                     || TextUtils.equals(action, SYSTEMUI_TASK_IME_NAVIGATION_UP)
@@ -574,10 +572,9 @@ public class ActionHandler {
             ((InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE))
                     .showInputMethodPicker(true /* showAuxiliarySubtypes */);
             return;
-/*        } else if (action.equals(SYSTEMUI_TASK_STOP_SCREENPINNING)) {
+        } else if (action.equals(SYSTEMUI_TASK_STOP_SCREENPINNING)) {
             turnOffLockTask();
             return;
-*/
         } else if (action.equals(SYSTEMUI_TASK_IME_NAVIGATION_RIGHT)) {
             triggerVirtualKeypress(context, KeyEvent.KEYCODE_DPAD_RIGHT);
             return;
@@ -1047,13 +1044,13 @@ public class ActionHandler {
         pm.goToSleep(SystemClock.uptimeMillis());
     }
 
-/*    public static void turnOffLockTask() {
+    public static void turnOffLockTask() {
         try {
-        	ActivityManagerNative.getDefault().stopLockTaskMode();
+            ActivityManagerNative.getDefault().stopSystemLockTaskMode();
         } catch (Exception e) {
         }
     }
-*/
+
 
     public static boolean isLockTaskOn() {
         try {
