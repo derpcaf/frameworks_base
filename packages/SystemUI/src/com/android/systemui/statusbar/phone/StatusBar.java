@@ -2096,7 +2096,7 @@ public class StatusBar extends SystemUI implements DemoMode,
     public boolean isUsingDarkTheme() {
         OverlayInfo themeInfo = null;
         try {
-            themeInfo = mOverlayManager.getOverlayInfo("com.android.system.theme.dark.havoc",
+            themeInfo = mOverlayManager.getOverlayInfo("com.android.system.theme.dark",
                     mLockscreenUserManager.getCurrentUserId());
         } catch (RemoteException e) {
             e.printStackTrace();
@@ -2107,7 +2107,7 @@ public class StatusBar extends SystemUI implements DemoMode,
     public boolean isUsingBlackTheme() {
         OverlayInfo themeInfo = null;
         try {
-            themeInfo = mOverlayManager.getOverlayInfo("com.android.system.theme.black.havoc",
+            themeInfo = mOverlayManager.getOverlayInfo("com.android.system.theme.black",
                     mLockscreenUserManager.getCurrentUserId());
         } catch (RemoteException e) {
             e.printStackTrace();
@@ -3943,11 +3943,11 @@ public class StatusBar extends SystemUI implements DemoMode,
 
         if (isUsingDarkTheme() != useDarkTheme) {
                 try {
-                    mOverlayManager.setEnabled("com.android.system.theme.dark.havoc",
+                    mOverlayManager.setEnabled("com.android.system.theme.dark",
                             useDarkTheme, mLockscreenUserManager.getCurrentUserId());
-                    mOverlayManager.setEnabled("com.android.systemui.theme.dark.havoc",
+                    mOverlayManager.setEnabled("com.android.systemui.theme.dark",
                             useDarkTheme, mLockscreenUserManager.getCurrentUserId());
-                    mOverlayManager.setEnabled("com.android.settings.theme.dark.havoc",
+                    mOverlayManager.setEnabled("com.android.settings.theme.dark",
                             useDarkTheme, mLockscreenUserManager.getCurrentUserId());
                     // Check for black and white accent so we don't end up
                     // with white on white or black on black
@@ -3959,11 +3959,11 @@ public class StatusBar extends SystemUI implements DemoMode,
 
         if (isUsingBlackTheme() != useBlackTheme) {
                 try {
-                    mOverlayManager.setEnabled("com.android.system.theme.black.havoc",
+                    mOverlayManager.setEnabled("com.android.system.theme.black",
                             useBlackTheme, mLockscreenUserManager.getCurrentUserId());
-                    mOverlayManager.setEnabled("com.android.systemui.theme.black.havoc",
+                    mOverlayManager.setEnabled("com.android.systemui.theme.black",
                             useBlackTheme, mLockscreenUserManager.getCurrentUserId());
-                    mOverlayManager.setEnabled("com.android.settings.theme.black.havoc",
+                    mOverlayManager.setEnabled("com.android.settings.theme.black",
                             useBlackTheme, mLockscreenUserManager.getCurrentUserId());
                     // Check for black and white accent so we don't end up
                     // with white on white or black on black
