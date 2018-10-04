@@ -4312,11 +4312,10 @@ public final class ViewRootImpl implements ViewParent,
                     int k = 0;
                     while (k < ViewRootImpl.this.mBackupEventList.size()) {
                         try {
-                            boolean ishandled = ViewRootImpl.this.mView.dispatchPointerEvent(
-                                    (MotionEvent) ViewRootImpl.this.mBackupEventList.get(k));
+                            boolean ishandled = ViewRootImpl.this.mView.dispatchPointerEvent((MotionEvent) ViewRootImpl.this.mBackupEventList.get(k));
                             k++;
                         } catch (NullPointerException e) {
-                            Log.e(ViewRootImpl.TAG, "mView does not exist, discard points. " + e);
+                            Log.e(ViewRootImpl.TAG, "mView does not exist, so discard the remaining points. " + e);
                             break;
                         }
                     }
