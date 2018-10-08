@@ -195,4 +195,8 @@
 
   <!-- Old QTI Blobs -->
   <java-symbol type="bool" name="config_oldQtiTelephony" />
+
+  <!-- Oreo's recents component activity -->
+  <java-symbol type="string" name="config_recentsComponentNameOreo" />
+
 </resources>
