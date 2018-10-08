@@ -37,7 +37,13 @@
   <java-symbol type="bool" name="config_useDarkBgNotificationTinting_override" />
   <java-symbol type="bool" name="config_notificationTinting_override" />
 
+<<<<<<< HEAD
   <!-- Fastscroller text color (Launcher3) -->
   <java-symbol type="color" name="fastscroller_text_color" />
+=======
+  <!-- SystemUI Restart -->
+  <java-symbol type="string" name="systemui_restart_title" />
+  <java-symbol type="string" name="systemui_restart_message" />
+>>>>>>> b8d05a77fc6... XtendedUtils: Import Restart SystemUI API
 
 </resources>
