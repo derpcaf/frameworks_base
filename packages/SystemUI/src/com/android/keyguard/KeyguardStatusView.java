@@ -119,6 +119,9 @@ public class KeyguardStatusView extends GridLayout implements
 		refreshLockDateFont();
 		refreshclocksize();
 		refreshdatesize();
+                updateClockColor();
+                updateClockDateColor();
+                updateOwnerInfoColor();
             }
         }
 
@@ -141,7 +144,10 @@ public class KeyguardStatusView extends GridLayout implements
 	    refreshLockDateFont();
 	    refreshclocksize();
 	    refreshdatesize();
-	    updateSettings();
+            updateClockColor();
+            updateClockDateColor();
+            updateOwnerInfoColor();
+            updateSettings();
 	}
 
         @Override
@@ -267,6 +273,9 @@ public class KeyguardStatusView extends GridLayout implements
 	refreshLockDateFont();
 	refreshclocksize();
 	refreshdatesize();
+        updateClockColor();
+        updateClockDateColor();
+        updateOwnerInfoColor();
 
         // Disable elegant text height because our fancy colon makes the ymin value huge for no
         // reason.
@@ -490,6 +499,36 @@ public class KeyguardStatusView extends GridLayout implements
     private int getLockDateSize() {
         return Settings.System.getInt(mContext.getContentResolver(),
                 Settings.System.LOCKDATE_FONT_SIZE, 14);
+    }
+
+    private void updateClockColor() {
+        ContentResolver resolver = getContext().getContentResolver();
+        int color = Settings.System.getInt(resolver,
+                Settings.System.LOCKSCREEN_CLOCK_COLOR, 0xFFFFFFFF);
+
+        if (mClockView != null) {
+            mClockView.setTextColor(color);
+        }
+    }
+
+    private void updateClockDateColor() {
+        ContentResolver resolver = getContext().getContentResolver();
+        int color = Settings.System.getInt(resolver,
+                Settings.System.LOCKSCREEN_CLOCK_DATE_COLOR, 0xFFFFFFFF);
+
+        if (mKeyguardSlice != null) {
+            mKeyguardSlice.setTextColor(color);
+       	}
+    }
+
+    private void updateOwnerInfoColor() {
+        ContentResolver resolver = getContext().getContentResolver();
+        int color = Settings.System.getInt(resolver,
+                Settings.System.LOCKSCREEN_OWNER_INFO_COLOR, 0xFFFFFFFF);
+
+        if (mOwnerInfo != null) {
+            mOwnerInfo.setTextColor(color);
+        }
     }
 
     private void refreshFormat() {
