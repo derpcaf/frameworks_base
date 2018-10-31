@@ -102,6 +102,7 @@ public class GamingModeTile extends QSTileImpl<BooleanState> {
 
     @Override
     protected void handleLongClick() {
+        handleClick();
 	showGamingModeWhatsThisDialog();
     }
 
