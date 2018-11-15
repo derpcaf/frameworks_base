@@ -193,4 +193,6 @@
   <java-symbol type="anim" name="ethans_launch_task_behind_source" />
   <java-symbol type="anim" name="ethans_launch_task_behind_target" />
 
+  <!-- Old QTI Blobs -->
+  <java-symbol type="bool" name="config_oldQtiTelephony" />
 </resources>
