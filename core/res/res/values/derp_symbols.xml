@@ -103,4 +103,9 @@
   <!-- Device Wake Keys -->
   <java-symbol type="integer" name="config_deviceHardwareWakeKeys" />
 
+  <!-- Powermenu animations -->
+  <java-symbol type="style" name="GlobalActionsAnimation" />
+  <java-symbol type="style" name="GlobalActionsAnimationTop" />
+  <java-symbol type="style" name="GlobalActionsAnimationEnter" />
+
 </resources>
