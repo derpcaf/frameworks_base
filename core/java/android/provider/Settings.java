@@ -8440,8 +8440,8 @@ public final class Settings {
             VOLUME_HUSH_GESTURE,
             MANUAL_RINGER_TOGGLE_COUNT,
             HUSH_GESTURE_USED,
-            WIFI_DISCONNECT_DELAY_DURATION
-            STATUS_BAR_BATTERY_STYLE
+            WIFI_DISCONNECT_DELAY_DURATION,
+            STATUS_BAR_BATTERY_STYLE,
         };
 
         /**
