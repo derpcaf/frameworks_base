@@ -4853,6 +4853,14 @@ public final class Settings {
         public static final String QS_RUNNING_SERVICES_TOGGLE = "qs_running_services_toggle";
 
         /**
+         * @hide
+         */
+        public static final String OMNI_LONG_PRESS_POWER_TORCH =
+                "long_press_power_torch";
+         private static final Validator OMNI_LONG_PRESS_POWER_TORCH_VALIDATOR =
+                BOOLEAN_VALIDATOR;
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -4929,7 +4937,8 @@ public final class Settings {
             STATUSBAR_CLOCK_DATE_DISPLAY,
             STATUSBAR_CLOCK_DATE_STYLE,
             STATUSBAR_CLOCK_DATE_FORMAT,
-            OMNI_USE_BOTTOM_GESTURE_NAVIGATION
+            OMNI_USE_BOTTOM_GESTURE_NAVIGATION,
+            OMNI_LONG_PRESS_POWER_TORCH
         };
 
         /**
@@ -5065,6 +5074,7 @@ public final class Settings {
 	    PRIVATE_SETTINGS.add(HIDE_LOCKSCREEN_STATUS_BAR);
             PRIVATE_SETTINGS.add(STATUS_BAR_LOGO);
             PRIVATE_SETTINGS.add(OMNI_USE_BOTTOM_GESTURE_NAVIGATION);
+            PRIVATE_SETTINGS.add(OMNI_LONG_PRESS_POWER_TORCH);
         }
 
 
@@ -5182,6 +5192,7 @@ public final class Settings {
             VALIDATORS.put(STATUSBAR_CLOCK_DATE_STYLE, STATUSBAR_CLOCK_DATE_STYLE_VALIDATOR);
             VALIDATORS.put(STATUSBAR_CLOCK_DATE_FORMAT, STATUSBAR_CLOCK_DATE_FORMAT_VALIDATOR);
             VALIDATORS.put(OMNI_USE_BOTTOM_GESTURE_NAVIGATION, OMNI_USE_BOTTOM_GESTURE_NAVIGATION_VALIDATOR);
+            VALIDATORS.put(OMNI_LONG_PRESS_POWER_TORCH, OMNI_LONG_PRESS_POWER_TORCH_VALIDATOR);
         }
 
         /**
