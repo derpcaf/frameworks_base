@@ -476,7 +476,7 @@ class GlobalActionsDialog implements DialogInterface.OnDismissListener,
             }
             if (GLOBAL_ACTION_KEY_POWER.equals(actionKey)) {
                 if (Settings.System.getInt(mContext.getContentResolver(),
-                        Settings.System.POWERMENU_POWER, 0) == 1) {
+                        Settings.System.POWERMENU_POWER, 1) == 1) {
                     mItems.add(new PowerAction());
                 }
             } else if (GLOBAL_ACTION_KEY_AIRPLANE.equals(actionKey)) {
@@ -526,7 +526,7 @@ class GlobalActionsDialog implements DialogInterface.OnDismissListener,
                 }
             } else if (GLOBAL_ACTION_KEY_RESTART_RECOVERY.equals(actionKey)) {
                 if (Settings.System.getInt(mContext.getContentResolver(),
-                        Settings.System.POWERMENU_RESTART_RECOVERY, 1) == 1) {
+                        Settings.System.POWERMENU_RESTART_RECOVERY, 0) == 1) {
                      mItems.add(mShowAdvancedToggles);
 		}
             } else if (GLOBAL_ACTION_KEY_SCREENSHOT.equals(actionKey)) {
@@ -548,12 +548,12 @@ class GlobalActionsDialog implements DialogInterface.OnDismissListener,
 		}
             } else if (GLOBAL_ACTION_KEY_ONTHEGO.equals(actionKey)) {
                 if (Settings.System.getInt(mContext.getContentResolver(),
-                        Settings.System.GLOBAL_ACTIONS_ONTHEGO, 1) == 1) {
+                        Settings.System.GLOBAL_ACTIONS_ONTHEGO, 0) == 1) {
                     mItems.add(getOnTheGoAction());
 		}
             } else if (GLOBAL_ACTION_KEY_SCREENRECORD.equals(actionKey)) {
                 if (Settings.System.getInt(mContext.getContentResolver(),
-                        Settings.System.POWERMENU_SCREENRECORD, 1) == 1) {
+                        Settings.System.POWERMENU_SCREENRECORD, 0) == 1) {
                     mItems.add(getScreenrecordAction());
                 }
             } else {
