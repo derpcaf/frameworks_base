@@ -346,11 +346,6 @@ public class QSCustomizer extends LinearLayout implements OnMenuItemClickListene
         } else {
             columns = Settings.System.getIntForUser(mContext.getContentResolver(),
                     Settings.System.QS_COLUMNS_LANDSCAPE, mDefaultColumns,
-                    Settings.System.QS_COLUMNS_PORTRAIT, mDefaultColumns,
-                    UserHandle.USER_CURRENT);
-        } else {
-            columns = Settings.System.getIntForUser(mContext.getContentResolver(),
-                    Settings.System.QS_COLUMNS_LANDSCAPE, mDefaultColumns,
                     UserHandle.USER_CURRENT);
         }
         mTileAdapter.setColumns(columns);
