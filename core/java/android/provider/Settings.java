@@ -5351,6 +5351,18 @@ public final class Settings {
                 new SettingsValidators.InclusiveIntegerRangeValidator(0, 1);
 
         /**
+         * Whether to hide the lockscreen clock
+         * @hide
+         */
+        public static final String LOCKSCREEN_CLOCK = "lockscreen_clock";
+
+        /**
+         * Whether to hide the items underneath the lockscreen clock
+         * @hide
+         */
+        public static final String LOCKSCREEN_INFO = "lockscreen_info";
+
+        /**
          * Select which lockscreen clock style to display
          * @hide
          */
