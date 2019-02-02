@@ -4767,6 +4767,12 @@ public final class Settings {
          */
         public static final String SWAP_VOLUME_BUTTONS = "swap_volume_buttons";
 
+         /**
+         * Toast icon
+         * @hide
+         */
+        public static final String TOAST_ICON = "toast_icon";
+
         /**
          * @hide
          */
@@ -5698,6 +5704,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(QS_HEADER_STYLE);
             PRIVATE_SETTINGS.add(ONE_HAND_MODE_ENABLED);
             PRIVATE_SETTINGS.add(SYSTEM_THEME_STYLE);
+            PRIVATE_SETTINGS.add(TOAST_ICON);
         }
 
 
