@@ -4774,6 +4774,18 @@ public final class Settings {
         public static final String TOAST_ICON = "toast_icon";
 
         /**
+         * Color of toast message icon
+         * @hide
+         */
+        public static final String TOAST_ICON_COLOR = "toast_icon_color";
+
+        /**
+         * Color of toast message test
+         * @hide
+         */
+        public static final String TOAST_TEXT_COLOR = "toast_text_color";
+
+        /**
          * @hide
          */
         public static final String VOLUME_BUTTON_MUSIC_CONTROL = "volume_button_music_control";

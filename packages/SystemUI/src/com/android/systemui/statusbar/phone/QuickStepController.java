@@ -22,7 +22,6 @@ import static com.android.systemui.Interpolators.ALPHA_IN;
 import static com.android.systemui.Interpolators.ALPHA_OUT;
 import static com.android.systemui.OverviewProxyService.DEBUG_OVERVIEW_PROXY;
 import static com.android.systemui.OverviewProxyService.TAG_OPS;
-import static com.android.systemui.shared.system.NavigationBarCompat.HIT_TARGET_DEAD_ZONE;
 import static com.android.systemui.shared.system.NavigationBarCompat.HIT_TARGET_HOME;
 import static com.android.systemui.shared.system.NavigationBarCompat.HIT_TARGET_ROTATION;
 
