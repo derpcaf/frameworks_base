@@ -191,4 +191,7 @@
     <string name="accessibility_quick_settings_navbar_changed_off">Navigation bar turned off</string>
     <string name="accessibility_quick_settings_navbar_changed_on">Navigation bar turned on</string>
 
+    <!-- Volume panel QS tile -->
+    <string name="quick_settings_volume_panel_label">Volume Panel</string>
+
 </resources>
