@@ -396,7 +396,6 @@ public class KeyguardBottomAreaView extends FrameLayout implements View.OnClickL
         lp.height = getResources().getDimensionPixelSize(R.dimen.keyguard_affordance_height);
         mLeftAffordanceView.setLayoutParams(lp);
         updateLeftAffordanceIcon();
-        updateEmergencyButton();
         updateCameraIconColor();
         updatePhoneIconColor();
         updateLockIconColor();

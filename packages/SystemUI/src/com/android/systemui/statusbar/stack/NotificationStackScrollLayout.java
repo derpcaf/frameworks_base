@@ -588,7 +588,8 @@ public class NotificationStackScrollLayout extends ViewGroup
 
         // Interpolate between semi-transparent notification panel background color
         // and white AOD separator.
-        float colorInterpolation = Interpolators.DECELERATE_QUINT.getInterpolation(mDarkAmount);
+        float colorInterpolation = Interpolators.DECELERATE_QUINT.getInterpolation(
+                mInterpolatedDarkAmount);
         int color = ColorUtils.blendARGB(awakeColor, Color.WHITE, colorInterpolation);
 
         if (mCachedBackgroundColor != color) {

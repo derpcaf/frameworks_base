@@ -439,6 +439,11 @@ public class MobileSignalController extends SignalController<
         return resId;
     }
 
+    private void updateImsRegistrationState() {
+        mCurrentState.imsResitered = mPhone.isImsRegistered(mSubscriptionInfo.getSubscriptionId());
+        notifyListenersIfNecessary();
+    }
+
     private void setListeners() {
         try {
             mImsManager.addCapabilitiesCallback(mCapabilityCallback);
@@ -1005,6 +1010,7 @@ public class MobileSignalController extends SignalController<
         boolean userSetup;
         boolean roaming;
         boolean showHD;
+        boolean imsResitered;
 
 
         @Override
@@ -1022,6 +1028,7 @@ public class MobileSignalController extends SignalController<
             userSetup = state.userSetup;
             roaming = state.roaming;
             showHD = state.showHD;
+            imsResitered = state.imsResitered;
         }
 
         @Override
@@ -1040,6 +1047,7 @@ public class MobileSignalController extends SignalController<
                     .append(',');
             builder.append("userSetup=").append(userSetup).append(',');
             builder.append("showHD=").append(showHD);
+            builder.append("imsResitered=").append(imsResitered);
         }
 
         @Override
@@ -1055,7 +1063,8 @@ public class MobileSignalController extends SignalController<
                     && ((MobileState) o).userSetup == userSetup
                     && ((MobileState) o).isDefault == isDefault
                     && ((MobileState) o).roaming == roaming
-                    && ((MobileState) o).showHD == showHD;
+                    && ((MobileState) o).showHD == showHD
+                    && ((MobileState) o).imsResitered == imsResitered;
         }
     }
 }
