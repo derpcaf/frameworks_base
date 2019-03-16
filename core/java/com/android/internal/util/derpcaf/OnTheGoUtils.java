@@ -17,7 +17,7 @@
 * -->
 */
 
-package com.android.internal.util.xtended;
+package com.android.internal.util.derpcaf;
 
 import android.app.ActivityManager;
 import android.content.Context;

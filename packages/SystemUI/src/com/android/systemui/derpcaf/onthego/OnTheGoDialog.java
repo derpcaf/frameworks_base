@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.systemui.derpcaf.onthego;
+package com.android.internal.util.derpcaf;
 
 import android.app.Dialog;
 import android.content.ContentResolver;
